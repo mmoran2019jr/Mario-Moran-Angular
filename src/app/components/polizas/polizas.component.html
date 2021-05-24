@@ -1,0 +1,64 @@
+<p class="h1">Listado de Polizas</p>
+<hr>
+<p class="h2">Agregar Poliza</p>
+
+<form (ngSubmit)="agregarData()">
+    <div class="form-group">
+        <label for="producto">Producto</label>
+        <input type="text" name="producto" class="form-control" [(ngModel)]="poliza.producto">
+    </div>
+
+    <div class="form-group">
+        <label for="numero">Numero</label>
+        <input type="text" name="numero" class="form-control" [(ngModel)]="poliza.numero">
+    </div>
+
+    <div class="form-group">
+        <label for="fechaInicio">Fecha Inicio</label>
+        <input type="text" name="fechaInicio" class="form-control" [(ngModel)]="poliza.fecha_inicio">
+    </div>
+
+    <div class="form-group">
+        <label for="fechaFin">Fecha Fin</label>
+        <input type="text" name="fechaFin" class="form-control" [(ngModel)]="poliza.fecha_fin">
+    </div>
+
+    <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" name="estado" class="form-control" [(ngModel)]="poliza.estado">
+    </div>
+    
+    <hr>
+
+    <button class="btn btn-dark">Agregar</button>
+
+    <hr>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">idPoliza</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Fecha Inicio</th>
+            <th scope="col">Fecha Fin</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pol of polizas">
+            <th scope="row">{{ pol.id }}</th>
+            <td>{{ pol.producto }}</td>
+            <td>{{ pol.numero }}</td>
+            <td>{{ pol.fecha_inicio }}</td>
+            <td>{{ pol.fecha_fin }}</td>
+            <td>{{ pol.estado }}</td>
+            <td>
+                <button class="btn btn-danger btn-sm" (click)="eliminarData(pol.id)">Eliminar</button>
+                <button class="btn btn-warning btn-sm mx-2" routerLink="/actualizar/{{ pol.id }}">Actualizar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

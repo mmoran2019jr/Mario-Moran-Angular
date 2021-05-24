@@ -1,0 +1,32 @@
+<p class="h1"> Listado De Clientes</p>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">idCliente</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">CUI</th>
+            <th scope="col">NIT</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Fecha Ingreso</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let clien of clientes">
+            <th scope="row">{{ clien.id }}</th>
+            <td>{{ clien.nombre }}</td>
+            <td>{{ clien.apellido }}</td>
+            <td>{{ clien.telefono }}</td>
+            <td>{{ clien.cui }}</td>
+            <td>{{ clien.nit }}</td>
+            <td>{{ clien.direccion }}</td>
+            <td>{{ clien.sexo }}</td>
+            <td>{{ clien.fecha_nacimiento }}</td>
+            <td>{{ clien.fecha_ingreso }}</td>
+        </tr>
+    </tbody>
+</table>
