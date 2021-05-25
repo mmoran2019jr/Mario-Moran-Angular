@@ -10,12 +10,28 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class PolizasComponent implements OnInit {
   polizas:any;
+  clientes:any;
+  productos:any;
   poliza = new Poliza();
 
   constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
     this.getPolizasData();
+    this.getClientesData();
+    this.getProductosData();
+  }
+
+  getClientesData(){
+    this.dataService.getClientes().subscribe(res =>{
+      this.clientes = res;
+    })
+  }
+
+  getProductosData(){
+    this.dataService.getProductos().subscribe(res =>{
+      this.productos = res;
+    })
   }
 
   getPolizasData(){

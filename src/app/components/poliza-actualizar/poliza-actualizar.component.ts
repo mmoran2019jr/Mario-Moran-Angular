@@ -10,33 +10,39 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class PolizaActualizarComponent implements OnInit {
   id:any;
+  clientes:any;
+  productos:any;
   data:any;
   poliza = new Poliza();
-  //editing borrar
-  //editing: boolean = false;
   constructor(private route:ActivatedRoute, private dataService: DataService) { 
-    /*este codigo se elimina despues
-    this.id = this.route.snapshot.params['id'];
-    if(this.id){
-      this.editing = true;
-    }else{
-      this.editing = false;
-    }*/
+
   }
 
   ngOnInit(): void {
     console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
     this.getData();
+    this.getClientesData();
+    this.getProductosData();
   }
 
   getData(){
     this.dataService.getPolizaById(this.id).subscribe(res =>{
-      //console.log(res);
       this.data = res;
       this.poliza = this.data;
-      console.log(res + "data");
     });
+  }
+
+  getClientesData(){
+    this.dataService.getClientes().subscribe(res =>{
+      this.clientes = res;
+    })
+  }
+
+  getProductosData(){
+    this.dataService.getProductos().subscribe(res =>{
+      this.productos = res;
+    })
   }
 
   actualizarPoliza(){

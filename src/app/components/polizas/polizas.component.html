@@ -3,9 +3,21 @@
 <p class="h2">Agregar Poliza</p>
 
 <form (ngSubmit)="agregarData()">
+
     <div class="form-group">
-        <label for="producto">Producto</label>
-        <input type="text" name="producto" class="form-control" [(ngModel)]="poliza.producto">
+        <label for="productosel">Producto</label>
+        <select class="form-select" aria-label="Default select example" name="miproducto" [(ngModel)]="poliza.producto_id">
+            <option selected value="">Seleccione un producto</option>
+            <option *ngFor="let produc of productos" value="{{ produc.id }}">{{ produc.codigo }}</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="cliente">Cliente</label>
+        <select class="form-select" aria-label="Default select example" name="micliente" [(ngModel)]="poliza.cliente_id">
+            <option selected value="">Seleccione un cliente</option>
+            <option *ngFor="let clien of clientes" value="{{ clien.id }}">{{ clien.nombre }}</option>
+        </select>
     </div>
 
     <div class="form-group">
@@ -40,6 +52,7 @@
         <tr>
             <th scope="col">idPoliza</th>
             <th scope="col">Producto</th>
+            <th scope="col">Cliente</th>
             <th scope="col">Numero</th>
             <th scope="col">Fecha Inicio</th>
             <th scope="col">Fecha Fin</th>
@@ -50,7 +63,8 @@
     <tbody>
         <tr *ngFor="let pol of polizas">
             <th scope="row">{{ pol.id }}</th>
-            <td>{{ pol.producto }}</td>
+            <td>{{ pol.producto.codigo }}</td>
+            <td>{{ pol.cliente.nombre }}</td>
             <td>{{ pol.numero }}</td>
             <td>{{ pol.fecha_inicio }}</td>
             <td>{{ pol.fecha_fin }}</td>
